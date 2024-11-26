@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Box, Tabs, Tab, Typography } from '@mui/material';
+import NorthIcon from '@mui/icons-material/North';
 
 interface HomeContentProps {
     selectedTab: number;
@@ -48,55 +49,67 @@ const HomeContent = ({
                 padding: '10px'
             }}
         >
-            <Tabs
-                value={selectedTab}
-                onChange={handleTabChange}
-                indicatorColor="primary"
-                textColor="primary"
-                sx={{
-                    borderBottom: '1px solid #ccc',
-                    marginBottom: '10px',
-                    padding: '20px',
-                    backgroundColor: 'white',
-                    borderRadius: '5px',
-                    '& .MuiTabs-indicator': {
-                        backgroundColor: '#7db6df',
-                    }
-                }}
-            >
-                <Tab sx={{
-                    '&.Mui-selected': {
-                        color: '#7db6df',
-                    },
-                    flexGrow: 1,
-                    textAlign: 'center',
-                }} label="Primer Curso" />
-                <Tab sx={{
-                    '&.Mui-selected': {
-                        color: '#7db6df',
-                    },
-                    flexGrow: 1,
-                    textAlign: 'center',
-                }} label="Segundo Curso" />
-                <Tab sx={{
-                    '&.Mui-selected': {
-                        color: '#7db6df',
-                    },
-                    flexGrow: 1,
-                    textAlign: 'center',
-                }} label="Tercer Curso" />
-                <Tab sx={{
-                    '&.Mui-selected': {
-                        color: '#7db6df',
-                    },
-                    flexGrow: 1,
-                    textAlign: 'center',
-                }} label="Cuarto Curso" />
-            </Tabs>
+            {selectedCareer !== '' ?
+                <div>
+                    <Tabs
+                        value={selectedTab}
+                        onChange={handleTabChange}
+                        indicatorColor="primary"
+                        textColor="primary"
+                        sx={{
+                            borderBottom: '1px solid #ccc',
+                            marginBottom: '10px',
+                            padding: '20px',
+                            backgroundColor: 'white',
+                            borderRadius: '5px',
+                            '& .MuiTabs-indicator': {
+                                backgroundColor: '#7db6df',
+                            }
+                        }}
+                    >
+                        <Tab sx={{
+                            '&.Mui-selected': {
+                                color: '#7db6df',
+                            },
+                            flexGrow: 1,
+                            textAlign: 'center',
+                        }} label="Primer Curso" />
+                        <Tab sx={{
+                            '&.Mui-selected': {
+                                color: '#7db6df',
+                            },
+                            flexGrow: 1,
+                            textAlign: 'center',
+                        }} label="Segundo Curso" />
+                        <Tab sx={{
+                            '&.Mui-selected': {
+                                color: '#7db6df',
+                            },
+                            flexGrow: 1,
+                            textAlign: 'center',
+                        }} label="Tercer Curso" />
+                        <Tab sx={{
+                            '&.Mui-selected': {
+                                color: '#7db6df',
+                            },
+                            flexGrow: 1,
+                            textAlign: 'center',
+                        }} label="Cuarto Curso" />
+                    </Tabs>
 
-            <Box sx={{ padding: '20px' }}>
-                {loadData()}
-            </Box>
+                    <Box sx={{ padding: '20px' }}>
+                        {loadData()}
+                    </Box>
+                </div>
+                :
+                <Box sx={{ textAlign: 'center', padding:'50px', color: '#c0c0c0'}}>
+                    <Typography sx={{fontSize: '50px'}}>Selecciona un grado para ver su contenido</Typography>
+                    <NorthIcon  style={{height: '100px', width: '100px'}}/>
+                    <NorthIcon  style={{height: '100px', width: '100px'}}/>
+                    <NorthIcon  style={{height: '100px', width: '100px'}}/>
+                </Box>
+            }
+
         </Box>
     );
 };
