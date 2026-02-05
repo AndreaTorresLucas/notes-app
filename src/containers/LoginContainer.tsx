@@ -3,8 +3,9 @@ import { loginStyle, generalStyle } from '../styles/styles';
 import { useNavigate } from 'react-router-dom';
 import HeaderComponent from '../components/HeaderComponent';
 import FooterComponent from '../components/FooterComponent';
+import LoginComponent from '../components/login/LoginComponent';
 
-function Login() {
+function LoginContainer() {
   const navigate = useNavigate();
 
   const handleLogin = () => {
@@ -21,24 +22,10 @@ function Login() {
       backgroundRepeat: 'no-repeat',
     }}>
       <HeaderComponent />
-      <div style={loginStyle.loginContainerStyle}>
-        <div style={{ ...loginStyle.loginBoxStyle }}>
-          <h1>Iniciar Sesión</h1>
-          <input type="text" placeholder="Usuario" style={{ ...generalStyle.inputStyle, boxSizing: 'border-box' }} />
-          <input type="password" placeholder="Contraseña" style={{ ...generalStyle.inputStyle, boxSizing: 'border-box' }} />
-          <button
-            style={generalStyle.buttonStyle}
-            onMouseOver={() => { }}
-            onMouseOut={() => { }}
-            onClick={handleLogin}
-          >
-            Iniciar sesión
-          </button>
-        </div>
-      </div>
+      <LoginComponent />
       <FooterComponent />
     </div>
   );
 }
 
-export default Login;
+export default LoginContainer;

@@ -6,7 +6,7 @@ import HomeContent from '../components/HomeContent';
 import HeaderComponent from '../components/HeaderComponent';
 import FooterComponent from '../components/FooterComponent';
 
-function Home() {
+function HomeContainer() {
   const [selectedTab, setSelectedTab] = useState(0);
   const [selectedCareer, setSelectedCareer] = useState('');
 
@@ -65,4 +65,4 @@ function Home() {
   );
 }
 
-export default Home;
+export default HomeContainer;
