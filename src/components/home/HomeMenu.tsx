@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import Avatar from '@mui/material/Avatar';
 import { Box, Typography } from '@mui/material';
-import { generalStyle } from '../styles/styles';
+import { generalStyle } from '../../styles/styles';
 import { Add, InsertDriveFile } from '@mui/icons-material';
 import InventoryIcon from '@mui/icons-material/Inventory';
 import PersonIcon from '@mui/icons-material/Person';

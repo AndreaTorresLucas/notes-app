@@ -1,4 +1,5 @@
 import { loginStyle, generalStyle } from '../styles/styles';
+import LangSwitcher from './custom/LangSwitcher';
 
 
 function HeaderComponent() {
@@ -18,6 +19,9 @@ function HeaderComponent() {
                     style={{ height: '40px', marginRight: '10px' }}
                 />
             </a>
+            <div style={{ marginLeft: 'auto' }}>
+                <LangSwitcher />
+            </div>
         </header>
     );
 }
