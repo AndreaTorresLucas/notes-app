@@ -6,7 +6,8 @@ import { Add, InsertDriveFile } from '@mui/icons-material';
 import InventoryIcon from '@mui/icons-material/Inventory';
 import PersonIcon from '@mui/icons-material/Person';
 import FolderSpecialIcon from '@mui/icons-material/FolderSpecial';
-
+import userService from '../services/users';
+import { getToken } from '../store/authStorage';
 
 
 function HomeMenu() {
@@ -27,6 +28,11 @@ function HomeMenu() {
     {
       id: 3,
       label: 'Mis archivos',
+      icon: <FolderSpecialIcon fontSize="large" sx={{ height: '20px' }} />,
+    },
+       {
+      id: 4,
+      label: 'USUARIOS',
       icon: <FolderSpecialIcon fontSize="large" sx={{ height: '20px' }} />,
     },
   ];
@@ -62,7 +68,21 @@ function HomeMenu() {
         {menuItems.map((item) => (
           <Box
             key={item.id}
-            onClick={() => setSelectedMenu(item.id)}
+            onClick={() => {
+              setSelectedMenu(item.id);
+              if (item.id === 4) {
+                (async () => {
+                  try {
+                    const token = getToken();
+                    if (!token) throw new Error("Not authorized");
+                    const users = await userService.getUsers();
+                    console.log("USUARIOS:", users);
+                  } catch (err) {
+                    console.error("ERROR getUsers:", err);
+                  }
+                })();
+              }
+            }}
             sx={{
               display: 'flex',
               alignItems: 'center',

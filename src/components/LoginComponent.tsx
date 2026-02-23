@@ -1,9 +1,11 @@
-import React, { useEffect, useState } from 'react';
-import { loginStyle, generalStyle } from '../../styles/styles';
+import React, { useContext, useEffect, useState } from 'react';
+import { loginStyle, generalStyle } from '../styles/styles';
 import { useNavigate } from 'react-router-dom';
-import loginService from '../../services/login';
-import { TokenResponse, User } from '../../types/types';
+import loginService from '../services/auth';
+import { TokenResponse, User } from '../types/types';
 import { Box } from '@mui/material';
+import { saveAuth } from '../store/authStorage';
+import { LoginContext } from '../App';
 
 
 function LoginComponent() {
@@ -15,20 +17,22 @@ function LoginComponent() {
   const [userLogin, setUserLogin] = useState<User | null>(null);
   const [tokenInfo, setTokenInfo] = useState<TokenResponse | null>(null);
   const [errorMessage, setErrorMessage] = useState("");
-
+  const [loggedIn, setLoggedIn] = useContext(LoginContext)!;
 
   useEffect(() => {
-   
-  }, [])
+   console.log(loggedIn)
+  }, [loggedIn])
 
   const handleLoginSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
    
     try {
-    const user = await loginService.logIn(formValues)
-    console.log("Info USUARIO: ", user)
-    setUserLogin(user.user)
-    setTokenInfo(user.tokenInfo)
+    const loginResponse = await loginService.logIn(formValues)
+    console.log("Info USUARIO: ", loginResponse)
+    setUserLogin(loginResponse.user)
+    setTokenInfo(loginResponse.token_info)
+    saveAuth(loginResponse.token_info)
+    setLoggedIn(true)
     navigate('/home');
     } catch (error) {
       setErrorMessage("La contraseña o el correo no son correctos")

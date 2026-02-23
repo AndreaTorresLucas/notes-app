@@ -13,7 +13,7 @@ export interface User {
 }
 
 export interface LoginResponse {
-    tokenInfo: TokenResponse;
+    token_info: TokenResponse;
     user: User;
 }
 
