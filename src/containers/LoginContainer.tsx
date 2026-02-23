@@ -1,18 +1,8 @@
-import React from 'react';
-import { loginStyle, generalStyle } from '../styles/styles';
-import { useNavigate } from 'react-router-dom';
 import HeaderComponent from '../components/HeaderComponent';
 import FooterComponent from '../components/FooterComponent';
-import LoginComponent from '../components/login/LoginComponent';
+import LoginComponent from '../components/LoginComponent';
 
 function LoginContainer() {
-  const navigate = useNavigate();
-
-  const handleLogin = () => {
-    //hacer comprobación del usuario
-    navigate('/home');
-  };
-
   return (
     <div style={{
       height: '100vh', display: 'flex', flexDirection: 'column',

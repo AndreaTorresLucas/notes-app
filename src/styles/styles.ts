@@ -25,7 +25,7 @@ export const generalStyle = {
         fontSize: '15px' 
     },
 
-    buttonStyle: {
+    buttonBoxStyle: {
         backgroundColor: '#7db6df',
         border: 'none',
         padding: '10px 20px',
@@ -53,5 +53,10 @@ export const generalStyle = {
         height: '20px',
         backdropFilter: 'blur(1px)', 
         backgroundColor: 'rgba(255, 255, 255, 0.1)', 
+    },
+
+    errorTextStyle: {
+        color: 'red',
+        fontSize: '14px',
     }
 }

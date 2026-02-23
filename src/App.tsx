@@ -1,18 +1,30 @@
-import React from 'react';
+import { createContext, useState, Dispatch, SetStateAction, useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import Home from './containers/HomeContainer';
-import Login from './containers/LoginContainer';
+import HomeContainer from './containers/HomeContainer';
+import LoginContainer from './containers/LoginContainer';
+import ProtectedRoute from "./components/ProtectedRoute";
+
+export const LoginContext = createContext<
+  [boolean, Dispatch<SetStateAction<boolean>>] | null>(null);
 
 function App() {
+  const [loggedIn, setLoggedIn] = useState(localStorage.getItem("access") ? true : false);
+
   return (
+    <LoginContext.Provider value={[loggedIn, setLoggedIn]}>
     <Router>
       <div className="app">
         <Routes>
-          <Route path="/" element={<Login />} />
-          <Route path="/home" element={<Home />} />
+          <Route path="/" element={<LoginContainer />} />
+          <Route path="/home" element={
+            <ProtectedRoute>
+              <HomeContainer />
+            </ProtectedRoute>
+            } />
         </Routes>
       </div>
     </Router>
+    </LoginContext.Provider>
   );
 }
 
