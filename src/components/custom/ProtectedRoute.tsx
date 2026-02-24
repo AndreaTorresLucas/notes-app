@@ -1,6 +1,6 @@
 import { useContext } from "react";
 import { Navigate } from "react-router-dom";
-import { LoginContext } from "../App";
+import { LoginContext } from "../../App";
 
 interface Props {
   children: JSX.Element;

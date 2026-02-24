@@ -2,7 +2,7 @@ import { createContext, useState, Dispatch, SetStateAction, useEffect } from 're
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import HomeContainer from './containers/HomeContainer';
 import LoginContainer from './containers/LoginContainer';
-import ProtectedRoute from "./components/ProtectedRoute";
+import ProtectedRoute from "./components/custom/ProtectedRoute";
 
 export const LoginContext = createContext<
   [boolean, Dispatch<SetStateAction<boolean>>] | null>(null);
