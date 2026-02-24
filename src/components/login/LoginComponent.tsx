@@ -1,14 +1,16 @@
 import React, { useContext, useEffect, useState } from 'react';
-import { loginStyle, generalStyle } from '../styles/styles';
+import { loginStyle, generalStyle } from '../../styles/styles';
 import { useNavigate } from 'react-router-dom';
-import loginService from '../services/auth';
-import { TokenResponse, User } from '../types/types';
+import loginService from '../../services/auth';
+import { TokenResponse, User } from '../../types/types';
 import { Box } from '@mui/material';
-import { saveAuth } from '../store/authStorage';
-import { LoginContext } from '../App';
+import { saveAuth } from '../../store/authStorage';
+import { LoginContext } from '../../App';
+import { useTranslation } from 'react-i18next';
 
 
 function LoginComponent() {
+  const { t } = useTranslation();
   const navigate = useNavigate();
   const [formValues, setFormValues] = useState({
     email: "",
@@ -46,18 +48,20 @@ function LoginComponent() {
   return (
       <div style={loginStyle.loginContainerStyle}>
         <div style={{ ...loginStyle.loginBoxStyle }}>
-          <h1>Iniciar Sesión</h1>
+          <h1>{t('login.title')}</h1>
           {errorMessage && (
             <p style={{...generalStyle.errorTextStyle}}>
               {errorMessage}
             </p>
           )}
           <form onSubmit={handleLoginSubmit}>
-            <input type="text" placeholder="Email de usuario" style={{ ...generalStyle.inputStyle, boxSizing: 'border-box' }} 
+            <input type="text" placeholder={t('login.email')} 
+            style={{ ...generalStyle.inputStyle, boxSizing: 'border-box' }} 
             value={formValues.email}
             onChange={(event) => setFormValues({...formValues, email: event.target.value})}
             />
-            <input type="password" placeholder="Contraseña" style={{ ...generalStyle.inputStyle, boxSizing: 'border-box' }}
+            <input type="password" placeholder={t('login.password')} 
+            style={{ ...generalStyle.inputStyle, boxSizing: 'border-box' }}
             value={formValues.password}
             onChange={(event) => setFormValues({...formValues, password: event.target.value})}
             />
@@ -76,7 +80,7 @@ function LoginComponent() {
                 }
               }}
             >
-              Iniciar sesión
+              {t('login.title')}
             </Box>
           </form>
         </div>

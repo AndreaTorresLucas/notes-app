@@ -1,9 +1,11 @@
 import { useContext, useEffect } from 'react';
-import { generalStyle } from '../styles/styles';
 import { LoginContext } from '../App';
 import { Box } from '@mui/material';
 import auth from '../services/auth'; 
 import { useNavigate } from 'react-router-dom';
+import { loginStyle, generalStyle } from '../styles/styles';
+import LangSwitcher from './custom/LangSwitcher';
+
 
 function HeaderComponent() {
     const [loggedIn, setLoggedIn] = useContext(LoginContext)!;
@@ -68,6 +70,9 @@ function HeaderComponent() {
               Iniciar Sesion
             </Box>
             }
+            <div style={{ marginLeft: 'auto' }}>
+                <LangSwitcher />
+            </div>
         </header>
     );
 }

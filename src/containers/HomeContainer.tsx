@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
-import HomeMenu from '../components/HomeMenu';
+import HomeMenu from '../components/home/HomeMenu';
 import { loginStyle, generalStyle } from '../styles/styles';
 import { Box, Typography, Tabs, Tab, Select, MenuItem, SelectChangeEvent } from '@mui/material';
-import HomeContent from '../components/HomeContent';
+import HomeContent from '../components/home/HomeContent';
 import HeaderComponent from '../components/HeaderComponent';
 import FooterComponent from '../components/FooterComponent';
 

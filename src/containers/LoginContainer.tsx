@@ -1,6 +1,6 @@
 import HeaderComponent from '../components/HeaderComponent';
 import FooterComponent from '../components/FooterComponent';
-import LoginComponent from '../components/LoginComponent';
+import LoginComponent from '../components/login/LoginComponent';
 
 function LoginContainer() {
   return (
